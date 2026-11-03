@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sovereign-ai"
+version = "0.1.0"
+description = "Reference control plane for the Sovereign AI Stack enterprise blueprint"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Ashish Srivastava" }]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6"]
+crypto = ["cryptography>=42"]
+gateway = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2"]
+dev = ["pytest>=8", "ruff>=0.5", "PyYAML>=6", "cryptography>=42", "jsonschema>=4"]
+
+[project.scripts]
+sovai = "sovereign_ai.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"

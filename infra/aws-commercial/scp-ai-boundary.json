@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyOutsideApprovedRegions",
+      "Effect": "Deny",
+      "NotAction": ["iam:*", "organizations:*", "sts:*", "support:*", "cloudfront:*", "route53:*"],
+      "Resource": "*",
+      "Condition": { "StringNotEquals": { "aws:RequestedRegion": ["eu-west-1"] } }
+    },
+    {
+      "Sid": "DenyGlobalCrossRegionInferenceProfiles",
+      "Effect": "Deny",
+      "Action": ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream", "bedrock:Converse", "bedrock:ConverseStream"],
+      "Resource": "arn:aws:bedrock:*:*:inference-profile/global.*"
+    },
+    {
+      "Sid": "DenyUnapprovedModelInvocation",
+      "Effect": "Deny",
+      "Action": ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream", "bedrock:Converse", "bedrock:ConverseStream"],
+      "NotResource": [
+        "arn:aws:bedrock:eu-west-1::foundation-model/APPROVED-MODEL-ID",
+        "arn:aws:bedrock:eu-west-1:*:inference-profile/eu.APPROVED-MODEL-ID"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+placeholder for retrieval_config (replace with real artifact or pointer file)

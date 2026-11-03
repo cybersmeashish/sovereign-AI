@@ -1,0 +1,21 @@
+{
+  "use_case_id": "enterprise-assistant",
+  "owner": "digital-workplace",
+  "risk_class": "limited",
+  "permitted_domains": [
+    "aws-commercial"
+  ],
+  "permitted_jurisdictions": [
+    "IE",
+    "DE",
+    "FR"
+  ],
+  "max_data_class": "internal",
+  "key_custody": "customer",
+  "approved_models": [
+    "anthropic.claude-sonnet"
+  ],
+  "autonomy_hours": 0,
+  "country_only": false,
+  "review_date": "2027-05-01"
+}

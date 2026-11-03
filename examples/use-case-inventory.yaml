@@ -1,0 +1,24 @@
+# AI use-case inventory (Blueprint §7, §10) — conforms to schemas/use-case-inventory.schema.json
+- use_case_id: restricted-engineering
+  application: restricted-engineering-assistant
+  owner: engineering-security
+  risk_class: high
+  deployment_domain: vmware-private
+  model: llama-3.1-70b-instruct
+  embedding_model: bge-m3
+  adapters: []
+  data_sources: [plm-vault, design-wiki]
+  risk_decision: approved-with-conditions-2026-10-30
+  frameworks: [NIST-AI-RMF, ISO-IEC-42001]
+  review_date: "2027-01-15"
+- use_case_id: eu-claims-assistant
+  application: claims-copilot
+  owner: eu-insurance-ops
+  risk_class: high
+  deployment_domain: aws-eusc
+  model: eu-approved-llm
+  embedding_model: eu-approved-embed
+  data_sources: [claims-db-eu]
+  risk_decision: approved-2026-10-12
+  frameworks: [NIST-AI-RMF, ISO-IEC-42001, EU-AI-Act]
+  review_date: "2027-02-01"

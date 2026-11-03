@@ -1,0 +1,20 @@
+{
+  "use_case_id": "airgap-defence-analyst",
+  "owner": "site-custodian",
+  "risk_class": "high",
+  "permitted_domains": [
+    "hpe-disconnected"
+  ],
+  "permitted_jurisdictions": [
+    "IN"
+  ],
+  "max_data_class": "restricted",
+  "key_custody": "hsm-local",
+  "allowed_egress": [],
+  "approved_models": [
+    "mistral-7b-instruct"
+  ],
+  "autonomy_hours": 2160,
+  "country_only": true,
+  "review_date": "2027-01-15"
+}

@@ -1,0 +1,41 @@
+# Model endpoint on VMware Kubernetes Service; image + weights pulled from the local Harbor model store.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm
+  namespace: sovereign-ai
+  annotations:
+    sovereign.ai/release-manifest: restricted-engineering-assistant@1.4.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: vllm }
+  template:
+    metadata:
+      labels: { app: vllm }
+    spec:
+      automountServiceAccountToken: false
+      securityContext: { runAsNonRoot: true, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: vllm
+          image: harbor.internal.example/ai/vllm-openai@sha256:REPLACE_WITH_APPROVED_DIGEST
+          args: ["--model", "/models/llama-3.1-70b-instruct", "--served-model-name", "llama-3.1-70b-instruct",
+                 "--tensor-parallel-size", "4", "--disable-log-requests"]
+          env:
+            - { name: HF_HUB_OFFLINE, value: "1" }
+            - { name: VLLM_NO_USAGE_STATS, value: "1" }
+          ports: [{ containerPort: 8000 }]
+          resources:
+            limits: { nvidia.com/gpu: 4 }
+          securityContext: { allowPrivilegeEscalation: false, capabilities: { drop: [ALL] } }
+          volumeMounts: [{ name: models, mountPath: /models, readOnly: true }]
+      volumes:
+        - name: models
+          persistentVolumeClaim: { claimName: approved-models }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: vllm, namespace: sovereign-ai }
+spec:
+  selector: { app: vllm }
+  ports: [{ port: 8000, targetPort: 8000 }]

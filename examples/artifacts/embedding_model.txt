@@ -1,0 +1,1 @@
+placeholder for embedding_model (replace with real artifact or pointer file)

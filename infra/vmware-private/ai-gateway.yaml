@@ -1,0 +1,41 @@
+# Local AI gateway with OPA sidecar: placement + tool authorization before inference.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-gateway
+  namespace: sovereign-ai
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: ai-gateway }
+  template:
+    metadata:
+      labels: { app: ai-gateway }
+    spec:
+      securityContext: { runAsNonRoot: true, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: gateway
+          image: harbor.internal.example/ai/sovereign-ai-gateway@sha256:REPLACE_WITH_APPROVED_DIGEST
+          env:
+            - { name: SOVAI_DOMAIN, value: vmware-private }
+            - { name: SOVAI_NO_ENDPOINT, value: deny }
+            - { name: SOVAI_PROFILES, value: /config/profiles }
+            - { name: SOVAI_ENDPOINTS, value: /config/endpoints.json }
+          ports: [{ containerPort: 8080 }]
+          readinessProbe: { httpGet: { path: /healthz, port: 8080 } }
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ALL] } }
+          volumeMounts: [{ name: config, mountPath: /config, readOnly: true }]
+        - name: opa
+          image: harbor.internal.example/mirror/openpolicyagent/opa@sha256:REPLACE_WITH_APPROVED_DIGEST
+          args: ["run", "--server", "--addr=127.0.0.1:8181", "--bundle", "--verification-key=/keys/policy.pub",
+                 "/bundles/policy-bundle.tar.gz"]
+          volumeMounts:
+            - { name: policy-bundle, mountPath: /bundles, readOnly: true }
+            - { name: policy-key, mountPath: /keys, readOnly: true }
+      volumes:
+        - name: config
+          configMap: { name: sovereign-ai-config }
+        - name: policy-bundle
+          configMap: { name: sovereign-ai-policy-bundle }
+        - name: policy-key
+          secret: { secretName: policy-verification-key }

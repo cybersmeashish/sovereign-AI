@@ -1,0 +1,58 @@
+[
+  {
+    "endpoint_id": "bedrock-euw1",
+    "domain": "aws-commercial",
+    "model_id": "anthropic.claude-sonnet",
+    "processing_jurisdictions": [
+      "IE"
+    ]
+  },
+  {
+    "endpoint_id": "bedrock-eu-geo",
+    "domain": "aws-commercial",
+    "model_id": "anthropic.claude-sonnet",
+    "processing_jurisdictions": [
+      "IE",
+      "DE",
+      "FR",
+      "SE",
+      "IT",
+      "ES"
+    ]
+  },
+  {
+    "endpoint_id": "eusc-brandenburg",
+    "domain": "aws-eusc",
+    "model_id": "eu-approved-llm",
+    "processing_jurisdictions": [
+      "DE"
+    ]
+  },
+  {
+    "endpoint_id": "vcf-vllm-mumbai",
+    "domain": "vmware-private",
+    "model_id": "llama-3.1-70b-instruct",
+    "processing_jurisdictions": [
+      "IN"
+    ]
+  },
+  {
+    "endpoint_id": "hpe-pcai-chennai",
+    "domain": "hpe-sovereign",
+    "model_id": "llama-3.1-70b-instruct",
+    "processing_jurisdictions": [
+      "IN"
+    ],
+    "approved_fallback_for": [
+      "restricted-engineering"
+    ]
+  },
+  {
+    "endpoint_id": "hpe-airgap-site1",
+    "domain": "hpe-disconnected",
+    "model_id": "mistral-7b-instruct",
+    "processing_jurisdictions": [
+      "IN"
+    ]
+  }
+]

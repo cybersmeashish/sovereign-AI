@@ -1,0 +1,22 @@
+{
+  "use_case_id": "eu-claims-assistant",
+  "owner": "eu-insurance-ops",
+  "risk_class": "high",
+  "permitted_domains": [
+    "aws-eusc"
+  ],
+  "permitted_jurisdictions": [
+    "DE"
+  ],
+  "max_data_class": "confidential",
+  "key_custody": "customer",
+  "administrator_eligibility": [
+    "eu-resident"
+  ],
+  "approved_models": [
+    "eu-approved-llm"
+  ],
+  "autonomy_hours": 72,
+  "country_only": true,
+  "review_date": "2027-02-01"
+}

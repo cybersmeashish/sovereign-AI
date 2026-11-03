@@ -1,0 +1,54 @@
+{
+  "application": "restricted-engineering-assistant",
+  "release": "1.4.0",
+  "approved_domains": [
+    "vmware-private",
+    "hpe-sovereign"
+  ],
+  "components": {
+    "model": {
+      "path": "artifacts/model.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "embedding_model": {
+      "path": "artifacts/embedding_model.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "retrieval_config": {
+      "path": "artifacts/retrieval_config.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "prompt_template": {
+      "path": "artifacts/prompt_template.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "safety_policy": {
+      "path": "artifacts/safety_policy.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "tool_definitions": {
+      "path": "artifacts/tool_definitions.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    },
+    "evaluation_suite": {
+      "path": "artifacts/evaluation_suite.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "1.0"
+    }
+  },
+  "approvals": {
+    "data_eligibility": "data-owner@corp",
+    "model_eligibility": "model-owner@corp",
+    "application_readiness": "appsec@corp",
+    "production_placement": "platform-gov@corp"
+  },
+  "expires_at": "2027-02-01T00:00:00+00:00",
+  "signature": null,
+  "key_id": null
+}

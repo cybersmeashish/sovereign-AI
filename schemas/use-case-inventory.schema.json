@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Use-Case Inventory Entry",
+  "type": "object",
+  "required": [
+    "use_case_id",
+    "application",
+    "owner",
+    "risk_class",
+    "deployment_domain",
+    "model",
+    "data_sources",
+    "risk_decision"
+  ],
+  "properties": {
+    "use_case_id": {
+      "type": "string"
+    },
+    "application": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "risk_class": {
+      "type": "string"
+    },
+    "deployment_domain": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "embedding_model": {
+      "type": "string"
+    },
+    "risk_decision": {
+      "type": "string"
+    },
+    "review_date": {
+      "type": "string"
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "adapters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "NIST-AI-RMF",
+          "ISO-IEC-42001",
+          "EU-AI-Act"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: { python-version: ["3.10", "3.11", "3.12"] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ matrix.python-version }}" }
+      - run: pip install -e ".[dev]"
+      - run: ruff check src tests
+      - run: pytest -q
+      - name: Validate example profiles against schema
+        run: |
+          python - <<'EOF'
+          import json, glob, jsonschema
+          s = json.load(open("schemas/sovereignty-profile.schema.json"))
+          for f in glob.glob("examples/profiles/*.json"):
+              jsonschema.validate(json.load(open(f)), s); print("valid", f)
+          EOF
+
+  opa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: open-policy-agent/setup-opa@v2
+        with: { version: latest }
+      - run: opa fmt --list --fail policies/ || true
+      - run: opa test policies/ -v
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive infra/

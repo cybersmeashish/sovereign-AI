@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release Manifest",
+  "type": "object",
+  "required": [
+    "application",
+    "release",
+    "approved_domains",
+    "components",
+    "approvals",
+    "expires_at",
+    "signature",
+    "key_id"
+  ],
+  "properties": {
+    "application": {
+      "type": "string"
+    },
+    "release": {
+      "type": "string"
+    },
+    "approved_domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "version"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "required": [
+        "data_eligibility",
+        "model_eligibility",
+        "application_readiness",
+        "production_placement"
+      ]
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "key_id": {
+      "type": "string"
+    }
+  }
+}

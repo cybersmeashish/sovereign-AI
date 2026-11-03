@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sovereign-ai
+  labels:
+    sovereign.ai/domain: vmware-private
+    pod-security.kubernetes.io/enforce: restricted

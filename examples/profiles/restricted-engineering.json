@@ -1,0 +1,20 @@
+{
+  "use_case_id": "restricted-engineering",
+  "owner": "engineering-security",
+  "risk_class": "high",
+  "permitted_domains": [
+    "vmware-private",
+    "hpe-sovereign"
+  ],
+  "permitted_jurisdictions": [
+    "IN"
+  ],
+  "max_data_class": "restricted",
+  "key_custody": "hsm-local",
+  "approved_models": [
+    "llama-3.1-70b-instruct"
+  ],
+  "autonomy_hours": 168,
+  "country_only": true,
+  "review_date": "2027-01-15"
+}
