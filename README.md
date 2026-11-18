@@ -1,3 +1,5 @@
+> **Portfolio context:** Reference implementation. [Inspect the project map](PORTFOLIO.md) for the evidence stage and key paths. [Ashish's security portfolio](https://github.com/cybersmeashish).
+
 # Sovereign AI Stack — Enterprise Blueprint & Reference Implementation
 
 **Enterprise AI governance across AWS, AWS European Sovereign Cloud, VMware and HPE GreenLake.**
