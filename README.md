@@ -1,6 +1,6 @@
 > **Portfolio context:** Reference implementation. [Inspect the project map](PORTFOLIO.md) for the evidence stage and key paths. [Ashish's security portfolio](https://github.com/cybersmeashish).
 
-# Sovereign AI Stack — Enterprise Blueprint & Reference Implementation
+# Sovereign AI & Security — Enterprise Blueprint & Reference Implementation
 
 **Enterprise AI governance across AWS, AWS European Sovereign Cloud, VMware and HPE GreenLake.**
 
@@ -90,3 +90,9 @@ signer is for labs and tests — use KMS/HSM-backed asymmetric keys in productio
 Apache License 2.0 — see [LICENSE](LICENSE).
 
 **Author:** Ashish Srivastava
+
+## Sovereign infrastructure and industry research
+
+[Disconnected cloud](https://github.com/cybersmeashish/sovereign-disconnected-cloud-security) · [Landing zone](https://github.com/cybersmeashish/sovereign-landing-zone) · [Government](https://github.com/cybersmeashish/government-security) · [BFSI](https://github.com/cybersmeashish/bfsi-security) · [Oil & Gas](https://github.com/cybersmeashish/oil-gas-security)
+
+[Consolidated architecture workspace](docs/consolidated-workspaces.md) connects the former enterprise-AI placeholder to this implementation.
