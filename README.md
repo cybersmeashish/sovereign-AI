@@ -96,3 +96,7 @@ Apache License 2.0 — see [LICENSE](LICENSE).
 [Disconnected cloud](https://github.com/cybersmeashish/sovereign-disconnected-cloud-security) · [Landing zone](https://github.com/cybersmeashish/sovereign-landing-zone) · [Government](https://github.com/cybersmeashish/government-security) · [BFSI](https://github.com/cybersmeashish/bfsi-security) · [Oil & Gas](https://github.com/cybersmeashish/oil-gas-security)
 
 [Consolidated architecture workspace](docs/consolidated-workspaces.md) connects the former enterprise-AI placeholder to this implementation.
+
+## Disconnected-cloud reference contribution
+
+[Inspect the Sovereign AI case](integrations/disconnected-cloud-reference.md) and its linked implementation, measured evidence and deployment questions.
